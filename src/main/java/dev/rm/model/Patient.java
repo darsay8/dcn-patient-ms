@@ -30,7 +30,7 @@ public class Patient {
     private String name;
 
     @Column(name = "birth_date")
-    private LocalDateTime birthDate;
+    private String birthDate;
 
     @Column(name = "diagnosis")
     private String diagnosis;
