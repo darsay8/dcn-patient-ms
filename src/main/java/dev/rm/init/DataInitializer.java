@@ -27,11 +27,8 @@ public class DataInitializer implements CommandLineRunner {
         log.info("Initializing data...");
 
         Patient patient1 = PatientFactory.createPatient("Juan Pérez", "1990-01-01", "Hypertension", "Good");
-
         Patient patient2 = PatientFactory.createPatient("María López", "1990-01-01", "Infarct", "Critical");
-
         Patient patient3 = PatientFactory.createPatient("Carlos Méndez", "1990-01-01", "Pneumonia", "Good");
-
         patientRepository.saveAll(Arrays.asList(patient1, patient2, patient3));
 
     }
