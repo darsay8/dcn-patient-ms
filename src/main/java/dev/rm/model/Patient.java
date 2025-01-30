@@ -1,18 +1,10 @@
 package dev.rm.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Data
 @Builder
@@ -26,11 +18,11 @@ public class Patient {
     @Column(name = "id")
     private Long patientId;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "birth_date")
-    private String birthDate;
+    @Column(name = "birth_date", nullable = false)
+    private LocalDate birthDate;
 
     @Column(name = "diagnosis")
     private String diagnosis;
@@ -38,7 +30,7 @@ public class Patient {
     @Column(name = "status")
     private String status;
 
-    @Column(name = "date_of_admission")
+    @Column(name = "date_of_admission", updatable = false)
     private LocalDateTime dateOfAdmission;
 
     @Column(name = "updated_at")
@@ -47,5 +39,10 @@ public class Patient {
     @PrePersist
     protected void onCreate() {
         dateOfAdmission = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
     }
 }
