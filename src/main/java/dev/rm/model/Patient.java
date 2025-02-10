@@ -28,7 +28,7 @@ public class Patient {
     private String diagnosis;
 
     @Column(name = "status")
-    private String status;
+    private PatientStatus status;
 
     @Column(name = "date_of_admission", updatable = false)
     private LocalDateTime dateOfAdmission;
